@@ -74,6 +74,7 @@ project(":rest") {
 project(":web") {
     dependencies {
         compile project(":business")
+        compile "org.springframework.boot:spring-boot-starter-mustache"
         compile "org.springframework.boot:spring-boot-starter-web"
     }
 }
