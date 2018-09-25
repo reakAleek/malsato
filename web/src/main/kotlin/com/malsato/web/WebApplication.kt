@@ -7,8 +7,8 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 @EnableBusinessModule
-class Application
+class WebApplication
 
 fun main(args: Array<String>) {
-    runApplication<Application>(*args)
+    runApplication<WebApplication>(*args)
 }

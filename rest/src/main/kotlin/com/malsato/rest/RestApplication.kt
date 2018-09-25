@@ -6,8 +6,8 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 @EnableBusinessModule
-class Application
+class RestApplication
 
 fun main(args: Array<String>) {
-    runApplication<Application>(*args)
+    runApplication<RestApplication>(*args)
 }
