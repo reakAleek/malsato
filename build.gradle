@@ -2,7 +2,6 @@ plugins {
     id "org.jetbrains.kotlin.jvm"               version "1.2.70"        apply false
     id "org.jetbrains.kotlin.plugin.spring"     version "1.2.70"        apply false
     id "org.jetbrains.kotlin.plugin.jpa"        version "1.2.70"        apply false
-    id "org.jetbrains.kotlin.kapt"              version "1.2.70"        apply false
     id "org.jetbrains.kotlin.plugin.noarg"      version "1.2.70"        apply false
     id "org.springframework.boot"               version "2.0.5.RELEASE" apply false
     id "io.spring.dependency-management"        version "1.0.6.RELEASE" apply false
@@ -23,10 +22,11 @@ allprojects {
 subprojects {
     apply plugin: "idea"
     apply plugin: "kotlin"
+    apply plugin: "org.jetbrains.kotlin.jvm"
     apply plugin: "org.jetbrains.kotlin.plugin.spring"
+    apply plugin: "org.jetbrains.kotlin.plugin.noarg"
     apply plugin: "org.springframework.boot"
     apply plugin: "io.spring.dependency-management"
-    apply plugin: "org.jetbrains.kotlin.plugin.noarg"
 
     noArg.annotation("com.malsato.common.util.NoArgsConstructor")
     bootJar.enabled = false
@@ -66,8 +66,10 @@ project(":common") {
 
 project(":rest") {
     dependencies {
+        compile project(":common")
         compile project(":business")
         compile "org.springframework.boot:spring-boot-starter-web"
+        compile "com.fasterxml.jackson.module:jackson-module-kotlin"
     }
 }
 
@@ -86,8 +88,7 @@ project(":data") {
     dependencies {
         compile "org.springframework.boot:spring-boot-starter-data-jpa"
         compile "mysql:mysql-connector-java"
-        compile "javax.xml.bind:jaxb-api"
-        compile "com.fasterxml.jackson.module:jackson-module-kotlin"
+        testCompile "org.testcontainers:mariadb:1.9.0"
     }
 }
 

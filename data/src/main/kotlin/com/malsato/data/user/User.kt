@@ -6,14 +6,14 @@ import javax.persistence.*
 @Entity
 data class User (
         @Column(nullable = false)
-        val name: String,
+        var name: String,
 
         @Column(nullable = false, unique = true)
-        val email: String,
+        var email: String,
 
         @Temporal(TemporalType.DATE)
-        val birthday: Date,
+        var birthday: Date,
 
         @Column(name = "is_admin", nullable = false)
-        val isAdmin: Boolean
+        var isAdmin: Boolean
 ) : BaseEntity()

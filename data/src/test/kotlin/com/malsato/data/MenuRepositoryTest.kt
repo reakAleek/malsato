@@ -1,7 +1,9 @@
 package com.malsato.data
 
 import assertk.assert
-import assertk.assertions.*
+import assertk.assertions.hasSize
+import assertk.assertions.isGreaterThan
+import assertk.assertions.isNotZero
 import com.malsato.data.dish.Dish
 import com.malsato.data.menu.Menu
 import com.malsato.data.menu.MenuRepository
@@ -13,12 +15,15 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
-import java.util.*
+import java.time.LocalDate
 import javax.persistence.EntityManager
+
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
+
 class MenuRepositoryTest {
+
 
     @SpringBootApplication
     class TestApp
@@ -49,7 +54,7 @@ class MenuRepositoryTest {
         val dish1 = Dish("Schnitzel", "€ 6,90", "Mit Kartoffelsalat \n und whatever")
         val dish2 = Dish("Gulasch", "€ 6,90", "Mit Semmel")
 
-        val menu = Menu(Date(), listOf(dish1, dish2), restaurant)
+        val menu = Menu(LocalDate.now(), listOf(dish1, dish2), restaurant)
 
         menuRepository.save(menu)
 

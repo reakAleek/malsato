@@ -4,6 +4,8 @@ import com.malsato.data.menu.MenuRepository
 import org.modelmapper.ModelMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.time.LocalDate
+import java.util.*
 import javax.persistence.EntityManager
 
 @Service
@@ -12,8 +14,13 @@ class MenuService(
         @Autowired val entityManager: EntityManager,
         @Autowired val mapper: ModelMapper
 ) {
-    fun getAllMenus(): List<Menu> {
+    fun getMenus(): List<Menu> {
         val menus = menuRepository.findAll()
+        return menus.map { menu -> mapper.map(menu, Menu::class.java) }
+    }
+
+    fun getMenus(restaurantId: UUID, date: LocalDate): List<Menu> {
+        val menus = menuRepository.findByRestaurantIdAndDate(restaurantId, date)
         return menus.map { menu -> mapper.map(menu, Menu::class.java) }
     }
 

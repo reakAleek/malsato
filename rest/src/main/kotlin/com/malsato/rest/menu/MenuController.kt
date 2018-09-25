@@ -1,4 +1,4 @@
-package com.malsato.rest
+package com.malsato.rest.menu
 
 import com.malsato.business.Menu
 import com.malsato.business.MenuService
@@ -16,6 +16,6 @@ class MenuController(
     @GetMapping("")
     fun getMenus(): List<Menu> {
 
-        return menuService.getAllMenus()
+        return menuService.getMenus()
     }
 }

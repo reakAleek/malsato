@@ -1,15 +1,17 @@
-package com.malsato.business
-
+package com.malsato.rest
 
 import com.malsato.common.util.NoArgsConstructor
 import java.time.LocalDate
 import java.util.*
 
+/**
+ * @author Jan Calanog, jan.calanog@iteratec.at
+ */
 
-abstract class BaseEntity(var id: UUID? = null)
+abstract class BaseEntity (var id: UUID? = null)
 
 @NoArgsConstructor
-data class Restaurant (
+data class Restaurant(
         var name: String,
         var coordinates: Coordinates,
         var address: Address
