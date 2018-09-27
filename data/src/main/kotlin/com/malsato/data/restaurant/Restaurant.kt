@@ -32,4 +32,8 @@ data class Restaurant (
                 fetch = FetchType.LAZY
         )
         private var menus: Collection<Menu> = emptyList()
-) : BaseEntity()
+) : BaseEntity() {
+        override fun toString(): String {
+                return "Restaurant(name='$name', coordinatesLat=$coordinatesLat, coordinatesLng=$coordinatesLng, addressCity='$addressCity', addressZip='$addressZip', addressStreet='$addressStreet')"
+        }
+}
